@@ -56,6 +56,8 @@ while True:
 
                         # Get start date
                         while True:
+                            os.system('cls')
+                            print("\n---- Set the date range ----\n")
                             start_date = input("Please enter the start date (In format yyyymmdd): ")
                             if start_date == "logout":
                                 sys.exit()
@@ -110,9 +112,10 @@ while True:
 
                                 # Save the data to the record file
                                 save_to_csv(final_data, record_file)
-                               
+                                
                                 print("\nEnter 'logout' to logout")
                                 print("Enter 'exit' to exit the function")
+                                
                                 break
                     else:
                         print("\nPlease enter the correct ticker. Ticker should have 4 characters.")

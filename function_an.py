@@ -117,8 +117,24 @@ def check_date(date_entry):
 def get_closing_prices(ticker, start_date, end_date):
     stock_data = yf.Ticker(ticker)  # Fetch stock data
     stock_info = stock_data.info  # Retrieve stock information
+
+    interval_map = {
+        1: '1d',
+        2: '7d',
+        3: '1mo'
+    }
+    print("Please select the interval you need:")
+    print("1. 1 day")
+    print("2. 1 week")
+    print("3. 1 month")
+    interval_choice = int(input("Enter your choice (1,2,3): "))
+    interval_in=interval_map[interval_choice]
+    if interval_choice not in interval_map:
+        print("Invalid interval choice. Please enter valid number.")
+        return
+
     # Fetch historical stock data
-    data = pd.DataFrame(stock_data.history(start=start_date, end=end_date))
+    data = pd.DataFrame(stock_data.history(start=start_date, end=end_date,interval=interval_in))
     
     # Calculate the date range
     end_date = datetime.strptime(end_date, "%Y-%m-%d")
@@ -143,6 +159,9 @@ def analyze_closing_prices(data):
     # Calculate percentage change in closing prices
     df["Percentage change"] = df["Close"].pct_change() * 100
     percentage_change = round(df['Percentage change'].iloc[-1], 2)
+    if len(df["Percentage change"]) == 0: 
+        print("Error: The 'Percentage change' column is empty.") 
+        return None
 
     # Determine the highest and lowest closing prices
     highest_close = df["Close"].max()
