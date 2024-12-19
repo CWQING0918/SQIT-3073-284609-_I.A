@@ -31,7 +31,7 @@ while True:
         current_time = datetime.now()  # Store current time for record
 
         while True:
-            print("\n---- Check record or searching stock? ----")
+            print("\n---- Check record or searching stock?(Please enter the number provided) ----")
             print("1. Check")  # Option to check records
             print("2. Search")  # Option to search stock data
             purpose_choice = input("Select the function:")
