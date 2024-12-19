@@ -10,7 +10,8 @@ def read_from_csv(filename):
     # Read the CSV file using pandas
     df = pd.read_csv(filename)
     # Display the last 10 rows of the dataframe
-    print(df.tail(10))
+    print(df[['Email','Time','Average Closing Price']].tail(10))
+    print(df[['Percentage Change','Highest Closing Price','Lowest Closing Price']]. tail(10))
 
 # Function to save data to a CSV file, appending to the file if it already exists
 def save_to_csv(data, filename):
