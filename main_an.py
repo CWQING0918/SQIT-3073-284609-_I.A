@@ -46,7 +46,7 @@ while True:
                 os.system('cls')
                 print("\n---- Stock data search (enter 'exit' to quit) ----")
                 while True:
-                    ticker = input("\nPlease enter the stock you want to search: ")
+                    ticker = input("\nPlease enter the stock you want to search (In format nnnn): ")
                     if ticker == "logout":
                         sys.exit()  # Exit program if user logs out
                     if ticker == "exit":
